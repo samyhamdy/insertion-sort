@@ -4,6 +4,7 @@ import 'package:insertion_sort/modules/insertion_sort/cubit/cubit.dart';
 import 'package:insertion_sort/modules/insertion_sort/cubit/states.dart';
 
 import 'package:insertion_sort/shared/components/components.dart';
+import 'package:sizer/sizer.dart';
 
 class InsertionSortScreen extends StatefulWidget {
   const InsertionSortScreen({Key? key}) : super(key: key);
@@ -26,6 +27,7 @@ class _InsertionSortScreenState extends State<InsertionSortScreen> {
         builder: (context, State) {
           return Scaffold(
             appBar: AppBar(
+              backgroundColor: HexColor("#f5a219"),
               title: const Text(
                 'Insertion Sort',
               ),
@@ -168,6 +170,7 @@ class _InsertionSortScreenState extends State<InsertionSortScreen> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: defaultButton(
+                        background: HexColor("#f5a219"),
                         function: () {
                           InsertionSortCubit.get(context).all = [];
                           InsertionSortCubit.get(context)
@@ -179,6 +182,7 @@ class _InsertionSortScreenState extends State<InsertionSortScreen> {
                     padding:
                         const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                     child: defaultButton(
+                        background: HexColor("#f5a219"),
                         function: () {
                           InsertionSortCubit.get(context).clearall();
                         },
@@ -202,18 +206,21 @@ class _InsertionSortScreenState extends State<InsertionSortScreen> {
           shape:
               BeveledRectangleBorder(borderRadius: BorderRadius.circular(15)),
           child: ListTile(
+            minLeadingWidth: double.infinity,
             title: Row(
               children: [
                 Text(
                   text.toString(),
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 12.sp),
+                  maxLines: 2,
                 ),
                 const SizedBox(
                   width: 5,
                 ),
                 Text(
                   "Key = ${key}",
-                  style: const TextStyle(fontSize: 16, color: Colors.blue),
+                  style: TextStyle(fontSize: 12.sp, color: Colors.blue),
+                  maxLines: 2,
                 ),
               ],
             ),

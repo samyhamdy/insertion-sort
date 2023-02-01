@@ -61,3 +61,46 @@ Widget defaultFormField({
         border: const OutlineInputBorder(),
       ),
     );
+
+class MainText extends StatelessWidget {
+  final String? txt;
+  final double? size;
+  final Color? fontColor;
+  final bool? linethrougth;
+  final bool? bold;
+
+  const MainText(
+      {this.txt, this.size, this.fontColor, this.linethrougth, this.bold});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      txt!,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+          decoration: linethrougth != null
+              ? TextDecoration.lineThrough
+              : TextDecoration.none,
+          fontFamily: bold != null && bold! ? "Cairo-Bold" : "Cairo-Regular",
+          fontSize: size ?? 10,
+          height: 1.5,
+          // fontWeight:
+          //     bold != null && bold ? FontWeight.w900 : FontWeight.normal,
+          color: this.fontColor ?? Colors.black),
+      // GoogleFonts.cairo()
+    );
+  }
+}
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor,
+        radix: 16); //numbers in hexa ---> so radox 16 --> base of 16
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+}
